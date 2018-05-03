@@ -11,7 +11,7 @@ namespace BasicAngularDotNetChat
         public void SendMessage(string name, string message)
         {
             Guid id = Guid.NewGuid();
-            Clients.All.broadcastMessage(id, name, message);
+            Clients.All.broadcastMessage(id, name, message, String.Format("{0:t}", DateTime.Now));
         }
     }
 }

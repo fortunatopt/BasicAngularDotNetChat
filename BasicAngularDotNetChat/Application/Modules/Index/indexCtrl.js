@@ -12,13 +12,17 @@ angular.module('ChatApp').controller("indexCtrl", function ($scope) {
     $.connection.hub.start(); // starts hub
 
     // register a client method on hub to be invoked by the server
-    $scope.chatHub.client.broadcastMessage = function (id, name, message) {
+    $scope.chatHub.client.broadcastMessage = function (id, name, message, time) {
         //var newMessage = name + ' says: ' + message;
         // push the newly coming message to the collection of messages
-        var chatClass = "msg-receive";
-        if (name === $scope.name)
-            chatClass = "msg-send";
-        $scope.messages.unshift({ "id": id, "name": name, "message": message, "class": chatClass });
+        var boxClass = "chat";
+        var dirClass = "time-left";
+        if (name === $scope.name) {
+            boxClass = "chat sent";
+            dirClass = "time-right";
+        }
+        console.log(id, name, message, time, boxClass, dirClass);
+        $scope.messages.unshift({ "id": id, "name": name, "message": message, "time": time, "boxclass": boxClass, "dirclass": dirClass });
         $scope.$apply();
     };
 
@@ -26,7 +30,6 @@ angular.module('ChatApp').controller("indexCtrl", function ($scope) {
         // sends a new message to the server
         $scope.chatHub.server.sendMessage($scope.name, $scope.message);
 
-        console.log('*', $scope.message, '*');
         $scope.message = '';
     };
 

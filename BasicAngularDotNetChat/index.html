@@ -67,6 +67,9 @@
     <script src="Application/Modules/Index/indexCtrl.js"></script>
     <script src="Application/Modules/Home/homeCtrl.js"></script>
     <script src="Application/Modules/Page1/page1Ctrl.js"></script>
+    
+    
+    
     <div class="wrapper">
         <form name="chatForm">
             <div class="chat-box">
@@ -75,8 +78,18 @@
                     <h2>Chat Box</h2>
                     <img id="chatArrow" src="https://maxcdn.icons8.com/windows10/PNG/16/Arrows/angle_down-16.png" title="Expand Arrow" width="16">
                 </div>
-                <div class="chat-body">
-                    <div class="msg-insert" ng-repeat="chat in messages" ng-class="chat.class">{{chat.message}}</div>
+                <div class="chat-body">                    
+                    <div ng-repeat="chat in messages">
+                        <!--<img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">-->
+                        <div ng-class="chat.boxclass">
+                            <p>{{chat.message}}</p>
+                            <span ng-class="chat.dirclass">{{chat.time}}</span>
+                        </div>
+                        <!--<span class="time-left">11:01</span>-->
+                    </div>
+
+
+                    <!--<div class="msg-insert" ng-repeat="chat in messages" ng-class="chat.class">{{chat.message}}</div>-->
                     <div id="chatText" class="chat-text">
                         <input type="text" id="message" ng-model="message" ng-keypress="($event.charCode==13)? message.length > 0 && newMessage() : return" /><br />
                     </div>
