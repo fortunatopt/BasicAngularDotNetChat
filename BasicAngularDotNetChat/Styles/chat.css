@@ -113,7 +113,7 @@ body {
 
 .chat {
     border: 2px solid #dedede;
-    background-color: #f1f1f1;
+    background-color: #33FF33;
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0;
@@ -121,7 +121,7 @@ body {
 }
 .sent {
     border-color: #ccc;
-    background-color: #ddd;
+    background-color: #33F9FF;
     text-align: right !important;
 }
 .chat::after {
